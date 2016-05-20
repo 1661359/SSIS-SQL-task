@@ -1,6 +1,6 @@
-INSERT INTO [dbo].[Transaction] (CustomerID, Date, Region)
-SELECT c.CustomerID, td.Date, td.Region 
-FROM [dbo].[Temporary Destination] AS td
-JOIN [dbo].[Customer] AS c
-ON c.Name = td.Customer
-GROUP BY td.TransactionId, c.CustomerID, td.Date, td.Region
+insert into [dbo].[Transaction] (CustomerID, Date, Region)
+select c.CustomerID, td.Date, td.Region 
+from [dbo].[TemporaryData] as td
+join [dbo].[Customer] as c
+on c.Name = td.Customer
+group by td.TransactionId, c.CustomerID, td.Date, td.Region

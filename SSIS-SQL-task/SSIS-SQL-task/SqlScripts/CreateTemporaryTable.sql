@@ -1,7 +1,7 @@
-IF OBJECT_ID('dbo.Temporary Destination', 'U') IS NOT NULL
- DROP TABLE [Temporary Destination];
+IF OBJECT_ID('dbo.TemporaryData', 'U') IS NOT NULL
+ DROP TABLE [TemporaryData];
 GO
-CREATE TABLE [Temporary Destination] (
+CREATE TABLE [TemporaryData] (
     [Product] nvarchar(255),
     [Customer] nvarchar(255),
     [TransactionId] float,

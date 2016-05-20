@@ -1,4 +1,4 @@
-INSERT INTO [Customer] (Name)
-SELECT td.Customer
-FROM [Temporary Destination] as td
-GROUP BY td.Customer 
+insert into [Customer] (Name)
+select td.Customer
+from [TemporaryData] as td
+group by td.Customer 

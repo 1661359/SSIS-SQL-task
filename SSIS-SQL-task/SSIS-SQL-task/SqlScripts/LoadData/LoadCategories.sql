@@ -1,4 +1,4 @@
-INSERT INTO [Category] (Name)
-SELECT td.Category
-FROM [Temporary Destination] as td
-GROUP BY td.Category 
+insert into [Category] (Name)
+select td.Category
+from [TemporaryData] as td
+group by td.Category 

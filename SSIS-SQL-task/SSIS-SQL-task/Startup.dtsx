@@ -11,21 +11,21 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Startup"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{0A81C9D1-5DFB-4A18-A0B9-745B9D9B87A6}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{D4CA74F0-6DBF-4EEC-A69A-AF35B074D593}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[CreateTemporaryDestinationTable.sql]"
+      DTS:refId="Package.ConnectionManagers[CreateTemporaryTable.sql]"
       DTS:CreationName="FILE"
       DTS:DTSID="{349DF12D-38D7-4B70-B58E-2D529344DA1A}"
-      DTS:ObjectName="CreateTemporaryDestinationTable.sql">
+      DTS:ObjectName="CreateTemporaryTable.sql">
       <DTS:PropertyExpression
-        DTS:Name="ConnectionString">@[$Project::scriptsDirectory]  + "CreateTemporaryDestinationTable.sql"</DTS:PropertyExpression>
+        DTS:Name="ConnectionString">@[$Project::scriptsDirectory]  + "CreateTemporaryTable.sql"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\SqlScripts\CreateTemporaryDestinationTable.sql" />
+          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\SqlScripts\CreateTemporaryTable.sql" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -58,7 +58,7 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{177EFB8F-99A2-4E5B-AF8A-8183C4B6C56C}"
           SQLTask:SqlStmtSourceType="FileConnection"
-          SQLTask:SqlStatementSource="CreateTemporaryDestinationTable.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="CreateTemporaryTable.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -389,7 +389,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Temporary Destination]</property>
+                  name="OpenRowset">[dbo].[TemporaryData]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -638,9 +638,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="195,42"
+          Id="Package\Create Temporary Table"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Drop Temporary Table"
+          TopLeft="9.50000000000006,515.5" />
+        <NodeLayout
           Size="137,42"
           Id="Package\Initialize Db"
           TopLeft="34.5,107.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load Data to Db"
+          TopLeft="24.0000000000001,413.5" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\Load Data to Temporary Table"
+          TopLeft="26.5000000000001,311.5" />
         <NodeLayout
           Size="173,42"
           Id="Package\Validate Source File"
@@ -667,14 +683,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="195,42"
-          Id="Package\Create Temporary Table"
-          TopLeft="5.50000000000003,209.5" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Drop Temporary Table"
-          TopLeft="9.50000000000006,515.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="103,149.5">
@@ -697,36 +705,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Load Data to Db"
-          TopLeft="24.0000000000001,413.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="103,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="225,42"
-          Id="Package\Load Data to Temporary Table"
-          TopLeft="26.5000000000001,311.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="103,251.5">
@@ -753,6 +731,28 @@
                     Point3="36,34" />
                   <mssgle:LineSegment
                     End="36,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="103,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

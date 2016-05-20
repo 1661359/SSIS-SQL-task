@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="LoadDataToDb"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{D0D4D284-7B80-4D28-9117-DC0862B307FD}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{61C327B5-DD0F-496C-BB1E-674D8F2FCB0A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -237,33 +237,21 @@
         <NodeLayout
           Size="151,42"
           Id="Package\Products to Db"
-          TopLeft="158,301" />
+          TopLeft="164,300" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="244,259">
+          TopLeft="241.75,259">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-10.5,42"
+              EndConnector="0,41"
               Start="0,0"
-              End="-10.5,34.5">
+              End="0,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17"
-                    Point2="0,21"
-                    Point3="-4,21" />
-                  <mssgle:LineSegment
-                    End="-6.5,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-6.5,21"
-                    Point2="-10.5,21"
-                    Point3="-10.5,25" />
-                  <mssgle:LineSegment
-                    End="-10.5,34.5" />
+                    End="0,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

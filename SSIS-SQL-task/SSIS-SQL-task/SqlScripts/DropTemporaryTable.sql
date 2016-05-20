@@ -1,4 +1,4 @@
-DROP TABLE [Temporary Destination]
+DROP TABLE [TemporaryData]
 GO
 
 
