@@ -26,13 +26,14 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DVORNIKD</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATc/Gz9fzDECLqsPk98kK3wAAAAACAAAAAAADZgAAwAAAABAAAADeDFpr0vVFpIJwIf0QgqNSAAAAAASAAACgAAAAEAAAAKN7GgI5howWejH+zUb1EleIAAAA3dj5rPn6Dk2tqeYTTYYpIjClW7fycB1aifb6VwoElzGcoeOWvI5z/ZxbHqRtXG/V4RC3YMW2xIDTGMDuGYW3Zpd4/3Vrreo7FH+0XoCWimyuZPnHad3qT5/LR/Hfar7WtA2CzmjP3aeQWA9cu87ldmZIsM/FL/FE/6ShKsUBTeQe99tn+uhSrhQAAADwSR48IXk3yyATirnu+0UUBi6XDg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATc/Gz9fzDECLqsPk98kK3wAAAAACAAAAAAADZgAAwAAAABAAAADxwnVA2CbAm4H8M92IutbaAAAAAASAAACgAAAAEAAAABMDyZxbovG+FuSxFSb/yoaIAAAA9CbdmlGgChEGn6pTvuIWmk/NZ4zxWLyc4egNo30KKkjzPgkVXj8QH7Enmlc4GfOcCHSrCaMY2vwppmVc34SmMNYDKLbfmYy3udZpNAs8Dm495AqL3XxsZXmNuPGYm6aC24LYDwv/cfHTBagpd/PKJGEKMYEF5Hr9NVw4Pje8KNUXEoxZAbWpYhQAAACrKewn+OIHkU6JMXgj1gN66AFwWA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Startup.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="InitDb.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ValidateSourceFile.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="LoadDatatoDb.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ExcelSource.conmgr" />
@@ -51,7 +52,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\WorkingDirectory\source.xls;Extended Properties="Excel 8.0;HDR=YES";</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\WorkingDirectory\source.xls;Extended Properties="EXCEL 8.0;HDR=YES";</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -223,10 +224,10 @@
                 <SSIS:Property SSIS:Name="Name">Startup</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">11</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{87644590-222A-4B3B-8099-22BAA2A0ECE7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D34B69B7-AFA7-4F3E-8625-D95CACF6AC24}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -436,6 +437,23 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="LoadDatatoDb.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{1D09B349-1860-45E8-8359-6FC8439F205F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">LoadDatatoDb</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">11</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{68CCA54E-6C24-4DD6-B7F3-1DE4BE300626}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
@@ -451,7 +469,13 @@
         <ConnectionProviderMappings />
         <ConnectionSecurityMappings />
         <DatabaseStorageLocations />
-        <ParameterConfigurationValues />
+        <ParameterConfigurationValues>
+          <ConfigurationSetting>
+            <Id>LastModifiedTime</Id>
+            <Name>LastModifiedTime</Name>
+            <Value xsi:type="xsd:dateTime">2016-05-20T10:16:42.2452108Z</Value>
+          </ConfigurationSetting>
+        </ParameterConfigurationValues>
       </Options>
     </Configuration>
   </Configurations>
