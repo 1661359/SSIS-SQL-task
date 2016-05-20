@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Startup"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{02070B86-45AA-415B-B0F9-F9ABEB23F4FB}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{829C86E8-3DB3-4471-B1AE-DC04D029B859}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -379,6 +379,7 @@
               description="OLE DB Destination"
               name="Temporary Table Destination"
               usesDispositions="true"
+              validateExternalMetadata="False"
               version="4">
               <properties>
                 <property
@@ -410,7 +411,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
