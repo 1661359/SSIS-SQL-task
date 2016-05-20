@@ -1,7 +1,6 @@
---insert into [TransactionProduct] (TransactionID, ProductID, Price)
-
-select *
-from (	select ProductID, product.Name, Region, Date, CustomerID 
+insert into [TransactionProduct] (TransactionID, ProductID, Price)
+select TransactionID, ProductID, Price
+from (	select ProductID, product.Name, Region, Date, CustomerID, temporaryData.Price 
 		from[TemporaryData] as temporaryData
 		join [Customer] as customer
 		on customer.Name = temporaryData.Customer

@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Startup"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{D4CA74F0-6DBF-4EEC-A69A-AF35B074D593}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{02070B86-45AA-415B-B0F9-F9ABEB23F4FB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -65,7 +65,6 @@
       DTS:refId="Package\Drop Temporary Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{B7EE329E-3494-450F-95F9-E2E15B8CC35E}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
