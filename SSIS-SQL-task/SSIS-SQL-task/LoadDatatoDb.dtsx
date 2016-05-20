@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="LoadDataToDb"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{BFD99859-C2A1-491B-8922-E114D67429D0}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{B2A4AE95-929F-40CD-903D-148F56C2EA2F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -50,6 +50,18 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\SqlScripts\LoadData\LoadProducts.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LoadTransactionProduct.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2B9EB41B-82FD-4964-BB89-BBAC02F65150}"
+      DTS:ObjectName="LoadTransactionProduct.sql">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::scriptsDirectory] + "LoadData\\LoadTransactionProduct.sql"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\SqlScripts\LoadData\LoadTransactionProduct.sql" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -107,7 +119,6 @@
       DTS:refId="Package\Product in Transaction to Db"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{56268957-8900-426C-A14A-627A5E2DC29F}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -116,7 +127,10 @@
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{177EFB8F-99A2-4E5B-AF8A-8183C4B6C56C}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="LoadTransactionProduct.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
