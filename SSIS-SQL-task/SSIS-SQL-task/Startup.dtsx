@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Startup"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{CADE3FAF-8CBA-4A31-93E2-0052C282501F}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{A59078D4-67A6-4E70-86D3-072FDD1AACF4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -152,7 +152,17 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FC75AF7B-F7AB-4E28-915C-83478E10B9A5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="errorsCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Create Log Directory"
@@ -206,6 +216,27 @@
           SQLTask:Connection="{177EFB8F-99A2-4E5B-AF8A-8183C4B6C56C}"
           SQLTask:SqlStmtSourceType="FileConnection"
           SQLTask:SqlStatementSource="DropTemporaryTable.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Failure if errors"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{cd014338-05b5-496a-8342-c1ff47471168}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Failure if errors"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="ForceExecutionResult">@[User::errorsCount] &gt; 0 ? 1 : -1</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_b6dff1abb92a47d99321578960240728"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::errorsCount" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -638,6 +669,35 @@
               </inputs>
             </component>
             <component
+              refId="Package\Load Data to Temporary Table\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::errorsCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Data to Temporary Table\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data to Temporary Table\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load Data to Temporary Table\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Data to Temporary Table\Temporary Table Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -828,9 +888,14 @@
               startId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output]" />
             <path
               refId="Package\Load Data to Temporary Table.Paths[OLE DB Destination Error Output]"
-              endId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input]"
+              endId="Package\Load Data to Temporary Table\Row Count.Inputs[Row Count Input 1]"
               name="OLE DB Destination Error Output"
               startId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output]" />
+            <path
+              refId="Package\Load Data to Temporary Table.Paths[Row Count Output 1]"
+              endId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\Load Data to Temporary Table\Row Count.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -877,6 +942,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\Load Data to Db" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{57577311-42DB-4F2C-8C5E-429986F91848}"
+      DTS:From="Package\Drop Temporary Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Failure if errors" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -891,28 +964,54 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="178,42"
+          Id="Package\Create Log Directory"
+          TopLeft="34.4999999999999,37" />
+        <NodeLayout
           Size="195,42"
           Id="Package\Create Temporary Table"
-          TopLeft="5.50000000000003,209.5" />
+          TopLeft="20,209.5" />
         <NodeLayout
           Size="187,42"
           Id="Package\Drop Temporary Table"
-          TopLeft="9.50000000000006,515.5" />
+          TopLeft="32,487.5" />
         <NodeLayout
           Size="137,42"
           Id="Package\Initialize Db"
-          TopLeft="34.5,107.5" />
+          TopLeft="48.9999999999999,107.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Load Data to Db"
-          TopLeft="24.0000000000001,413.5" />
+          TopLeft="38.5,413.5" />
         <NodeLayout
           Size="225,42"
           Id="Package\Load Data to Temporary Table"
-          TopLeft="10.5000000000001,312.5" />
+          TopLeft="25.0000000000001,312.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="120.5,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.5"
+              Start="0,0"
+              End="0,21">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="103,149.5">
+          TopLeft="117.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -934,7 +1033,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="103,251.5">
+          TopLeft="117.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -968,18 +1067,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="103,455.5">
+          TopLeft="121.5,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,32"
               Start="0,0"
-              End="0,52.5">
+              End="0,24.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,24.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -990,7 +1089,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="123,354.5">
+          TopLeft="137.5,354.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1023,23 +1122,23 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="178,42"
-          Id="Package\Create Log Directory"
-          TopLeft="20,37" />
+          Size="153,42"
+          Id="Package\Failure if errors"
+          TopLeft="50,583.25" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="106,79">
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="126,529.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28.5"
+              EndConnector="0,53.75"
               Start="0,0"
-              End="0,21">
+              End="0,46.25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21" />
+                    End="0,46.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1057,13 +1156,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="217,42"
+          Id="Package\Load Data to Temporary Table\Temporary Table Destination"
+          TopLeft="248,172" />
+        <NodeLayout
           Size="141,42"
           Id="Package\Load Data to Temporary Table\Excel Source"
           TopLeft="287,73" />
         <NodeLayout
-          Size="217,42"
-          Id="Package\Load Data to Temporary Table\Temporary Table Destination"
-          TopLeft="248,172" />
+          Size="174,42"
+          Id="Package\Load Data to Temporary Table\Flat File Destination"
+          TopLeft="279,331" />
         <EdgeLayout
           Id="Package\Load Data to Temporary Table.Paths[Excel Source Output]"
           TopLeft="357,115">
@@ -1087,38 +1190,72 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="174,42"
-          Id="Package\Load Data to Temporary Table\Flat File Destination"
-          TopLeft="269,253" />
+          Size="132,42"
+          Id="Package\Load Data to Temporary Table\Row Count"
+          TopLeft="302,245" />
         <EdgeLayout
           Id="Package\Load Data to Temporary Table.Paths[OLE DB Destination Error Output]"
-          TopLeft="356.25,214">
+          TopLeft="356.5,214">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39"
+              EndConnector="11.5,31"
               Start="0,0"
-              End="0,31.5">
+              End="11.5,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5" />
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="7.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.5,15.5"
+                    Point2="11.5,15.5"
+                    Point3="11.5,19.5" />
+                  <mssgle:LineSegment
+                    End="11.5,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,10.033203125,146.4178125,11.43359375"
+              BoundingBox="-67.45890625,20.5,146.4178125,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data to Temporary Table.Paths[Row Count Output 1]"
+          TopLeft="367,287">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Data to Temporary Table\Excel Source">
+    design-time-name="Package\Load Data to Temporary Table\Temporary Table Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1131,7 +1268,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Data to Temporary Table\Temporary Table Destination">
+    design-time-name="Package\Load Data to Temporary Table\Excel Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
