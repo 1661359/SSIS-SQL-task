@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Startup"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{829C86E8-3DB3-4471-B1AE-DC04D029B859}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{CADE3FAF-8CBA-4A31-93E2-0052C282501F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -40,9 +40,138 @@
           DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\SqlScripts\DropTemporaryTable.sql" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[invalidData]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{81C71E01-30E3-42FE-9E30-763A9D37206F}"
+      DTS:ObjectName="invalidData">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::workingDirectory] +  @[$Project::logDirectory] + "invalid-data.txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1049"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1251"
+          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\WorkingDirectory\logs\invalid-data.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Product"
+              DTS:DTSID="{B0A01438-EE4D-49BB-B2D6-8DA79BF34479}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Customer"
+              DTS:DTSID="{6AFC5370-23BB-491A-8CE4-C90E234E1034}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Price"
+              DTS:DTSID="{FFAB9975-7D73-4A6B-B05B-BA8A2A77DAD1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TransactionId"
+              DTS:DTSID="{C990B30C-67D9-462B-B295-C1DB95D7C8D8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Region"
+              DTS:DTSID="{120F3BC3-F52D-4CF5-9A58-7D3A414A18FD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Category"
+              DTS:DTSID="{F3514076-9289-4772-956F-5A923051641C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date"
+              DTS:DTSID="{B8FEADEF-D3F6-4E0B-AE23-2592AA72798C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorCode"
+              DTS:DTSID="{A1506852-D8A5-4D92-8513-39AE3888744E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorColumn"
+              DTS:DTSID="{17BC26E4-567F-4B7A-A347-92895942A386}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logs Directory]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{82CD956D-0786-4A11-B436-C69DC7CE7A5C}"
+      DTS:ObjectName="Logs Directory">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::workingDirectory] +  @[$Project::logDirectory]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="3"
+          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\WorkingDirectory\logs\" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Log Directory"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{2E4C38CD-A89F-443D-9290-D867FF64D42D}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Log Directory"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="{82CD956D-0786-4A11-B436-C69DC7CE7A5C}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Create Temporary Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -373,6 +502,142 @@
               </outputs>
             </component>
             <component
+              refId="Package\Load Data to Temporary Table\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1049"
+              name="Flat File Destination">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data to Temporary Table\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[invalidData]"
+                  connectionManagerRefId="Package.ConnectionManagers[invalidData]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Product]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Product]"
+                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Product]" />
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Customer]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Customer"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Customer]"
+                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Customer]" />
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Price]"
+                      cachedDataType="r8"
+                      cachedName="Price"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[TransactionId]"
+                      cachedDataType="r8"
+                      cachedName="TransactionId"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[TransactionId]"
+                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[TransactionId]" />
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Category"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Category]"
+                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Category]" />
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Date]"
+                      cachedDataType="date"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Product]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Customer]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Price]"
+                      dataType="r8"
+                      name="Price" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[TransactionId]"
+                      dataType="r8"
+                      name="TransactionId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Date]"
+                      dataType="date"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
               refId="Package\Load Data to Temporary Table\Temporary Table Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -441,7 +706,7 @@
                 <input
                   refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="RedirectRow"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
@@ -561,25 +826,13 @@
               endId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input]"
               name="Excel Source Output"
               startId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Load Data to Temporary Table.Paths[OLE DB Destination Error Output]"
+              endId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="OLE DB Destination Error Output"
+              startId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output]" />
           </paths>
         </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Validate Source File"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Execute Package Task"
-      DTS:DTSID="{8E891E52-B830-4FC5-99A5-A7B762FDFC4A}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Validate Source File"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
-          <PackageName>ValidateSourceFile.dtsx</PackageName>
-        </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -587,8 +840,8 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{DF42C777-E1A9-435E-876C-A59AC6FE38EA}"
-      DTS:From="Package\Validate Source File"
+      DTS:DTSID="{136D2E87-A3ED-45CF-B954-2DE9904F480B}"
+      DTS:From="Package\Create Log Directory"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Initialize Db" />
@@ -656,33 +909,7 @@
         <NodeLayout
           Size="225,42"
           Id="Package\Load Data to Temporary Table"
-          TopLeft="26.5000000000001,311.5" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Validate Source File"
-          TopLeft="16.5,5.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="103,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="10.5000000000001,312.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="103,149.5">
@@ -711,26 +938,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="36,60"
+              EndConnector="20.0000000000001,61"
               Start="0,0"
-              End="36,52.5">
+              End="20.0000000000001,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
+                    End="0,26.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
                   <mssgle:LineSegment
-                    End="32,30" />
+                    End="16.0000000000001,30.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="32,30"
-                    Point2="36,30"
-                    Point3="36,34" />
+                    Point1="16.0000000000001,30.5"
+                    Point2="20.0000000000001,30.5"
+                    Point3="20.0000000000001,34.5" />
                   <mssgle:LineSegment
-                    End="36,52.5" />
+                    End="20.0000000000001,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -763,30 +990,56 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="139,353.5">
+          TopLeft="123,354.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-36,60"
+              EndConnector="-20,59"
               Start="0,0"
-              End="-36,52.5">
+              End="-20,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
+                    End="0,25.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="-4,29.5" />
                   <mssgle:LineSegment
-                    End="-32,30" />
+                    End="-16,29.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-32,30"
-                    Point2="-36,30"
-                    Point3="-36,34" />
+                    Point1="-16,29.5"
+                    Point2="-20,29.5"
+                    Point3="-20,33.5" />
                   <mssgle:LineSegment
-                    End="-36,52.5" />
+                    End="-20,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Create Log Directory"
+          TopLeft="20,37" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="106,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.5"
+              Start="0,0"
+              End="0,21">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -802,7 +1055,7 @@
     design-time-name="Package\Load Data to Temporary Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="141,42"
           Id="Package\Load Data to Temporary Table\Excel Source"
@@ -831,6 +1084,34 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Load Data to Temporary Table\Flat File Destination"
+          TopLeft="269,253" />
+        <EdgeLayout
+          Id="Package\Load Data to Temporary Table.Paths[OLE DB Destination Error Output]"
+          TopLeft="356.25,214">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,10.033203125,146.4178125,11.43359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
