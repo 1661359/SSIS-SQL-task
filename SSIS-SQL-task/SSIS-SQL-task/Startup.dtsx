@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Startup"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{A59078D4-67A6-4E70-86D3-072FDD1AACF4}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{7B4856DC-E1E9-42B7-B5F9-F52C27FD8DB3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -219,13 +219,15 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Failure if errors"
+      DTS:refId="Package\Fail if errors"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
       DTS:DTSID="{cd014338-05b5-496a-8342-c1ff47471168}"
       DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:FailParentOnFailure="True"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Failure if errors"
+      DTS:ObjectName="Fail if errors"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:PropertyExpression
@@ -949,7 +951,7 @@
       DTS:From="Package\Drop Temporary Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
-      DTS:To="Package\Failure if errors" />
+      DTS:To="Package\Fail if errors" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1122,12 +1124,12 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="153,42"
-          Id="Package\Failure if errors"
+          Size="137,42"
+          Id="Package\Fail if errors"
           TopLeft="50,583.25" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="126,529.5">
+          TopLeft="122,529.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
