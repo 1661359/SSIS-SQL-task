@@ -11,35 +11,11 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Startup"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{7B4856DC-E1E9-42B7-B5F9-F52C27FD8DB3}">
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{6B862E08-2642-4FA0-A1AD-A7BC239893AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[CreateTemporaryTable.sql]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{349DF12D-38D7-4B70-B58E-2D529344DA1A}"
-      DTS:ObjectName="CreateTemporaryTable.sql">
-      <DTS:PropertyExpression
-        DTS:Name="ConnectionString">@[$Project::scriptsDirectory]  + "CreateTemporaryTable.sql"</DTS:PropertyExpression>
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\SqlScripts\CreateTemporaryTable.sql" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DropTemporaryTable.sql]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{91753A65-30C2-4826-A573-041C3CA8F2FE}"
-      DTS:ObjectName="DropTemporaryTable.sql">
-      <DTS:PropertyExpression
-        DTS:Name="ConnectionString">@[$Project::scriptsDirectory] + "DropTemporaryTable.sql"</DTS:PropertyExpression>
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\SqlScripts\DropTemporaryTable.sql" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[invalidData]"
       DTS:CreationName="FLATFILE"
@@ -56,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1251"
-          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\WorkingDirectory\logs\invalid-data.txt">
+          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\WorkingDirectory\logs\invalid-data.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -148,21 +124,11 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:FileUsageType="3"
-          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\SSIS-SQL-task\SSIS-SQL-task\SSIS-SQL-task\WorkingDirectory\logs\" />
+          DTS:ConnectionString="C:\Users\D.Dvornik\Source\Repos\WorkingDirectory\logs\" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{FC75AF7B-F7AB-4E28-915C-83478E10B9A5}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="errorsCount">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+  <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Create Log Directory"
@@ -180,42 +146,6 @@
           TaskOperationType="CreateDirectory"
           TaskOverwriteDestFile="True"
           TaskSourcePath="{82CD956D-0786-4A11-B436-C69DC7CE7A5C}" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Create Temporary Table"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{C8214852-580C-4745-A3C2-2EDDDD28D713}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Create Temporary Table"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{177EFB8F-99A2-4E5B-AF8A-8183C4B6C56C}"
-          SQLTask:SqlStmtSourceType="FileConnection"
-          SQLTask:SqlStatementSource="CreateTemporaryTable.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Drop Temporary Table"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{B7EE329E-3494-450F-95F9-E2E15B8CC35E}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Drop Temporary Table"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{177EFB8F-99A2-4E5B-AF8A-8183C4B6C56C}"
-          SQLTask:SqlStmtSourceType="FileConnection"
-          SQLTask:SqlStatementSource="DropTemporaryTable.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -275,633 +205,6 @@
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Load Data to Temporary Table"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{B2943DCE-39A7-4B00-80CC-F096B1566C88}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Load Data to Temporary Table"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\Load Data to Temporary Table\Excel Source"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="Excel Source"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">'Sample-spreadsheet-file$'</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Data to Temporary Table\Excel Source.Connections[OleDbConnection]"
-                  connectionManagerID="{CFE61554-46F8-4BD1-8A5B-21F8849D21BD}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ExcelSource]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output]"
-                  name="Excel Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Product]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product]"
-                      length="255"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Product]"
-                      name="Product"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Customer]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer]"
-                      length="255"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Customer]"
-                      name="Customer"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Price]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Price]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Price]"
-                      name="Price"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[TransactionId]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[TransactionId]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[TransactionId]"
-                      name="TransactionId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Region]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Region]"
-                      length="255"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Region]"
-                      name="Region"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Category]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category]"
-                      length="255"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Category]"
-                      name="Category"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Date]"
-                      dataType="date"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Date]"
-                      name="Date"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[#]"
-                      dataType="r8"
-                      name="#" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product]"
-                      dataType="wstr"
-                      length="255"
-                      name="Product" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer]"
-                      dataType="wstr"
-                      length="255"
-                      name="Customer" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[TransactionId]"
-                      dataType="r8"
-                      name="TransactionId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Price]"
-                      dataType="r8"
-                      name="Price" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[F6]"
-                      dataType="r8"
-                      name="F6" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Region]"
-                      dataType="wstr"
-                      length="255"
-                      name="Region" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category]"
-                      dataType="wstr"
-                      length="255"
-                      name="Category" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[F9]"
-                      dataType="r8"
-                      name="F9" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date]"
-                      dataType="date"
-                      name="Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[F11]"
-                      dataType="wstr"
-                      length="255"
-                      name="F11" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[F12]"
-                      dataType="wstr"
-                      length="255"
-                      name="F12" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[F13]"
-                      dataType="wstr"
-                      length="255"
-                      name="F13" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output]"
-                  isErrorOut="true"
-                  name="Excel Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Product]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Product]"
-                      name="Product" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Customer]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Customer]"
-                      name="Customer" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Price]"
-                      dataType="r8"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Price]"
-                      name="Price" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[TransactionId]"
-                      dataType="r8"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[TransactionId]"
-                      name="TransactionId" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Region]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Region]"
-                      name="Region" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Category]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Category]"
-                      name="Category" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Date]"
-                      dataType="date"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Error Output].Columns[Date]"
-                      name="Date" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Data to Temporary Table\Flat File Destination"
-              componentClassID="Microsoft.FlatFileDestination"
-              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Flat File Destination"
-              localeId="1049"
-              name="Flat File Destination">
-              <properties>
-                <property
-                  dataType="System.Boolean"
-                  description="Specifies whether the data will overwrite or append to the destination file."
-                  name="Overwrite">true</property>
-                <property
-                  dataType="System.Null"
-                  description="Specifies the text to write to the destination file before any data is written."
-                  expressionType="Notify"
-                  name="Header" />
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Data to Temporary Table\Flat File Destination.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[invalidData]"
-                  connectionManagerRefId="Package.ConnectionManagers[invalidData]"
-                  name="FlatFileConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input]"
-                  hasSideEffects="true"
-                  name="Flat File Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Product]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Product"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Product]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Product]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Customer]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Customer"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Customer]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Customer]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Price]"
-                      cachedDataType="r8"
-                      cachedName="Price"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Price]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Price]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[TransactionId]"
-                      cachedDataType="r8"
-                      cachedName="TransactionId"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[TransactionId]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[TransactionId]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Region]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Region"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Region]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Region]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Category]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Category"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Category]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Category]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[Date]"
-                      cachedDataType="date"
-                      cachedName="Date"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Date]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Date]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorCode]"
-                      cachedDataType="i4"
-                      cachedName="ErrorCode"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
-                      lineageId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorColumn]"
-                      cachedDataType="i4"
-                      cachedName="ErrorColumn"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
-                      lineageId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Product]"
-                      dataType="wstr"
-                      length="255"
-                      name="Product" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Customer]"
-                      dataType="wstr"
-                      length="255"
-                      name="Customer" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Price]"
-                      dataType="r8"
-                      name="Price" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[TransactionId]"
-                      dataType="r8"
-                      name="TransactionId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Region]"
-                      dataType="wstr"
-                      length="255"
-                      name="Region" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Category]"
-                      dataType="wstr"
-                      length="255"
-                      name="Category" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Date]"
-                      dataType="date"
-                      name="Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
-                      dataType="i4"
-                      name="ErrorCode" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
-                      dataType="i4"
-                      name="ErrorColumn" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-            </component>
-            <component
-              refId="Package\Load Data to Temporary Table\Row Count"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="Row Count">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::errorsCount</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\Load Data to Temporary Table\Row Count.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Data to Temporary Table\Row Count.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\Load Data to Temporary Table\Row Count.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Data to Temporary Table\Temporary Table Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Temporary Table Destination"
-              usesDispositions="true"
-              validateExternalMetadata="False"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[TemporaryData]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1251</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Data to Temporary Table\Temporary Table Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{177EFB8F-99A2-4E5B-AF8A-8183C4B6C56C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DestinationDb]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="RedirectRow"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].Columns[Product]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Product"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Product]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].Columns[Customer]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Customer"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Customer]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].Columns[Price]"
-                      cachedDataType="r8"
-                      cachedName="Price"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Price]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].Columns[TransactionId]"
-                      cachedDataType="r8"
-                      cachedName="TransactionId"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionId]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[TransactionId]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].Columns[Region]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Region"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Region]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].Columns[Category]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Category"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Category]" />
-                    <inputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].Columns[Date]"
-                      cachedDataType="date"
-                      cachedName="Date"
-                      externalMetadataColumnId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
-                      lineageId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output].Columns[Date]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product]"
-                      dataType="wstr"
-                      length="255"
-                      name="Product" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer]"
-                      dataType="wstr"
-                      length="255"
-                      name="Customer" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionId]"
-                      dataType="r8"
-                      name="TransactionId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
-                      dataType="r8"
-                      name="Price" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
-                      dataType="wstr"
-                      length="255"
-                      name="Region" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
-                      dataType="wstr"
-                      length="255"
-                      name="Category" />
-                    <externalMetadataColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
-                      dataType="dbTimeStamp"
-                      name="Date" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Load Data to Temporary Table.Paths[Excel Source Output]"
-              endId="Package\Load Data to Temporary Table\Temporary Table Destination.Inputs[OLE DB Destination Input]"
-              name="Excel Source Output"
-              startId="Package\Load Data to Temporary Table\Excel Source.Outputs[Excel Source Output]" />
-            <path
-              refId="Package\Load Data to Temporary Table.Paths[OLE DB Destination Error Output]"
-              endId="Package\Load Data to Temporary Table\Row Count.Inputs[Row Count Input 1]"
-              name="OLE DB Destination Error Output"
-              startId="Package\Load Data to Temporary Table\Temporary Table Destination.Outputs[OLE DB Destination Error Output]" />
-            <path
-              refId="Package\Load Data to Temporary Table.Paths[Row Count Output 1]"
-              endId="Package\Load Data to Temporary Table\Flat File Destination.Inputs[Flat File Destination Input]"
-              name="Row Count Output 1"
-              startId="Package\Load Data to Temporary Table\Row Count.Outputs[Row Count Output 1]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -915,42 +218,18 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{5EB852B7-FDE7-4AED-A303-270148F51DE8}"
+      DTS:DTSID="{54C11C61-F0C9-4BB0-B345-61E345E19577}"
       DTS:From="Package\Initialize Db"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Create Temporary Table" />
+      DTS:To="Package\Load Data to Db" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{358B079D-B516-4CBE-9703-C477E7B14D86}"
-      DTS:From="Package\Create Temporary Table"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Load Data to Temporary Table" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{87E2397E-472E-420D-AE82-8E45E78AF6FB}"
+      DTS:DTSID="{AD3B15B2-FF8F-4D58-BB9C-92D0F91FCB37}"
       DTS:From="Package\Load Data to Db"
       DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Drop Temporary Table" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{55A8DFD5-10C4-4BB1-862D-AB67EE33DDA8}"
-      DTS:From="Package\Load Data to Temporary Table"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Load Data to Db" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
-      DTS:CreationName=""
-      DTS:DTSID="{57577311-42DB-4F2C-8C5E-429986F91848}"
-      DTS:From="Package\Drop Temporary Table"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 5"
+      DTS:ObjectName="Constraint 2"
       DTS:To="Package\Fail if errors" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -964,45 +243,37 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="178,42"
           Id="Package\Create Log Directory"
           TopLeft="34.4999999999999,37" />
         <NodeLayout
-          Size="195,42"
-          Id="Package\Create Temporary Table"
-          TopLeft="20,209.5" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Drop Temporary Table"
-          TopLeft="32,487.5" />
+          Size="137,42"
+          Id="Package\Fail if errors"
+          TopLeft="61,277.25" />
         <NodeLayout
           Size="137,42"
           Id="Package\Initialize Db"
-          TopLeft="48.9999999999999,107.5" />
+          TopLeft="57.9999999999999,108.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Load Data to Db"
-          TopLeft="38.5,413.5" />
-        <NodeLayout
-          Size="225,42"
-          Id="Package\Load Data to Temporary Table"
-          TopLeft="25.0000000000001,312.5" />
+          TopLeft="50.5,198.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="120.5,79">
+          TopLeft="125,79">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28.5"
+              EndConnector="0,29.5"
               Start="0,0"
-              End="0,21">
+              End="0,22">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21" />
+                    End="0,22" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1013,18 +284,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="117.5,149.5">
+          TopLeft="128,150.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,48"
               Start="0,0"
-              End="0,52.5">
+              End="0,40.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1035,112 +306,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="117.5,251.5">
+          TopLeft="129.5,240.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="20.0000000000001,61"
+              EndConnector="0,36.75"
               Start="0,0"
-              End="20.0000000000001,53.5">
+              End="0,29.25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.5"
-                    Point2="0,30.5"
-                    Point3="4,30.5" />
-                  <mssgle:LineSegment
-                    End="16.0000000000001,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.0000000000001,30.5"
-                    Point2="20.0000000000001,30.5"
-                    Point3="20.0000000000001,34.5" />
-                  <mssgle:LineSegment
-                    End="20.0000000000001,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="121.5,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32"
-              Start="0,0"
-              End="0,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="137.5,354.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-20,59"
-              Start="0,0"
-              End="-20,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.5"
-                    Point2="0,29.5"
-                    Point3="-4,29.5" />
-                  <mssgle:LineSegment
-                    End="-16,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16,29.5"
-                    Point2="-20,29.5"
-                    Point3="-20,33.5" />
-                  <mssgle:LineSegment
-                    End="-20,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="137,42"
-          Id="Package\Fail if errors"
-          TopLeft="50,583.25" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="122,529.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53.75"
-              Start="0,0"
-              End="0,46.25">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.25" />
+                    End="0,29.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1152,135 +329,5 @@
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\Load Data to Temporary Table">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="217,42"
-          Id="Package\Load Data to Temporary Table\Temporary Table Destination"
-          TopLeft="248,172" />
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Load Data to Temporary Table\Excel Source"
-          TopLeft="287,73" />
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Load Data to Temporary Table\Flat File Destination"
-          TopLeft="279,331" />
-        <EdgeLayout
-          Id="Package\Load Data to Temporary Table.Paths[Excel Source Output]"
-          TopLeft="357,115">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57"
-              Start="0,0"
-              End="0,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="132,42"
-          Id="Package\Load Data to Temporary Table\Row Count"
-          TopLeft="302,245" />
-        <EdgeLayout
-          Id="Package\Load Data to Temporary Table.Paths[OLE DB Destination Error Output]"
-          TopLeft="356.5,214">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11.5,31"
-              Start="0,0"
-              End="11.5,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.5"
-                    Point2="0,15.5"
-                    Point3="4,15.5" />
-                  <mssgle:LineSegment
-                    End="7.5,15.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.5,15.5"
-                    Point2="11.5,15.5"
-                    Point3="11.5,19.5" />
-                  <mssgle:LineSegment
-                    End="11.5,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-67.45890625,20.5,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Data to Temporary Table.Paths[Row Count Output 1]"
-          TopLeft="367,287">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Data to Temporary Table\Temporary Table Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Data to Temporary Table\Excel Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
