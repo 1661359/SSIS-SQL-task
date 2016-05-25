@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[Transaction](
+CREATE TABLE [Market].[Transaction](
 	[TransactionID] [uniqueidentifier] DEFAULT (newsequentialid()) NOT NULL,
 	[Region] [nvarchar](255)  NOT NULL,
 	[CustomerID] [uniqueidentifier] NOT NULL,
@@ -11,9 +11,9 @@ CREATE TABLE [dbo].[Transaction](
 
 GO
 
-ALTER TABLE [dbo].[Transaction]  WITH CHECK ADD  CONSTRAINT [FK_Transaction_Transaction] FOREIGN KEY([CustomerID])
-REFERENCES [dbo].[Customer] ([CustomerID])
+ALTER TABLE [Market].[Transaction]  WITH CHECK ADD  CONSTRAINT [FK_Transaction_Transaction] FOREIGN KEY([CustomerID])
+REFERENCES [Market].[Customer] ([CustomerID])
 GO
 
-ALTER TABLE [dbo].[Transaction] CHECK CONSTRAINT [FK_Transaction_Transaction]
+ALTER TABLE [Market].[Transaction] CHECK CONSTRAINT [FK_Transaction_Transaction]
 GO

@@ -1,4 +1,4 @@
-insert into [Customer] (Name)
-select td.Customer
-from [TemporaryData] as td
-group by td.Customer 
+INSERT INTO [Market].[Customer] (Name)
+SELECT td.Customer
+FROM [import].[TemporaryData] AS td
+GROUP BY td.Customer 

@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[Category](
+CREATE TABLE [Market].[Category](
 	[CategoryID] [uniqueidentifier] DEFAULT (newsequentialid()) NOT NULL,
 	[Name] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Category] PRIMARY KEY CLUSTERED 

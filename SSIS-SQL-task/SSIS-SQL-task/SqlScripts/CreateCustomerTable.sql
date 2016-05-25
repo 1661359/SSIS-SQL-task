@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[Customer](
+CREATE TABLE [Market].[Customer](
 	[CustomerID] [uniqueidentifier] DEFAULT (newsequentialid()) NOT NULL,
 	[Name] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 

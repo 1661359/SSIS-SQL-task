@@ -1,4 +1,4 @@
-insert into [Category] (Name)
-select td.Category
-from [TemporaryData] as td
-group by td.Category 
+INSERT INTO [Market].[Category] (Name)
+SELECT td.Category
+FROM [import].[TemporaryData] AS td
+GROUP BY td.Category 

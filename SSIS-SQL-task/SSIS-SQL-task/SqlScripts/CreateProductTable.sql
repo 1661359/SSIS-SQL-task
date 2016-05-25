@@ -1,7 +1,7 @@
-CREATE TABLE [dbo].[Product](
+CREATE TABLE [Market].[Product](
 	[ProductID] [uniqueidentifier] DEFAULT (newsequentialid()) NOT NULL,
 	[Name] [nvarchar](255) NOT NULL,
-	[Price] [float] NOT NULL,
+	[Price] [decimal] NOT NULL,
 	[CategoryID] [uniqueidentifier] NOT NULL,
  CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED 
 (
@@ -11,9 +11,9 @@ CREATE TABLE [dbo].[Product](
 
 GO
 
-ALTER TABLE [dbo].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_Category] FOREIGN KEY([CategoryID])
-REFERENCES [dbo].[Category] ([CategoryID])
+ALTER TABLE [Market].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_Category] FOREIGN KEY([CategoryID])
+REFERENCES [Market].[Category] ([CategoryID])
 GO
 
-ALTER TABLE [dbo].[Product] CHECK CONSTRAINT [FK_Product_Category]
+ALTER TABLE [Market].[Product] CHECK CONSTRAINT [FK_Product_Category]
 GO

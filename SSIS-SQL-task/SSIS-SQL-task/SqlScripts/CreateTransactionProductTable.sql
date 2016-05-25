@@ -1,7 +1,7 @@
-CREATE TABLE [dbo].[TransactionProduct](
+CREATE TABLE [Market].[TransactionProduct](
 	[TransactionID] [uniqueidentifier] NOT NULL,
 	[ProductID] [uniqueidentifier] NOT NULL,
-	[Price] [float] NOT NULL,
+	[Price] [decimal] NOT NULL,
  CONSTRAINT [PK_TransactionProduct] PRIMARY KEY CLUSTERED 
 (
 	[TransactionID] ASC,
@@ -11,16 +11,16 @@ CREATE TABLE [dbo].[TransactionProduct](
 
 GO
 
-ALTER TABLE [dbo].[TransactionProduct]  WITH CHECK ADD  CONSTRAINT [FK_TransactionProduct_Product] FOREIGN KEY([ProductID])
-REFERENCES [dbo].[Product] ([ProductID])
+ALTER TABLE [Market].[TransactionProduct]  WITH CHECK ADD  CONSTRAINT [FK_TransactionProduct_Product] FOREIGN KEY([ProductID])
+REFERENCES [Market].[Product] ([ProductID])
 GO
 
-ALTER TABLE [dbo].[TransactionProduct] CHECK CONSTRAINT [FK_TransactionProduct_Product]
+ALTER TABLE [Market].[TransactionProduct] CHECK CONSTRAINT [FK_TransactionProduct_Product]
 GO
 
-ALTER TABLE [dbo].[TransactionProduct]  WITH CHECK ADD  CONSTRAINT [FK_TransactionProduct_Transaction] FOREIGN KEY([TransactionID])
-REFERENCES [dbo].[Transaction] ([TransactionID])
+ALTER TABLE [Market].[TransactionProduct]  WITH CHECK ADD  CONSTRAINT [FK_TransactionProduct_Transaction] FOREIGN KEY([TransactionID])
+REFERENCES [Market].[Transaction] ([TransactionID])
 GO
 
-ALTER TABLE [dbo].[TransactionProduct] CHECK CONSTRAINT [FK_TransactionProduct_Transaction]
+ALTER TABLE [Market].[TransactionProduct] CHECK CONSTRAINT [FK_TransactionProduct_Transaction]
 GO

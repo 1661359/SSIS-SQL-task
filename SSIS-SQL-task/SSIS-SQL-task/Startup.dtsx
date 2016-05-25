@@ -11,8 +11,8 @@
   DTS:LocaleID="1049"
   DTS:ObjectName="Startup"
   DTS:PackageType="5"
-  DTS:VersionBuild="46"
-  DTS:VersionGUID="{6B862E08-2642-4FA0-A1AD-A7BC239893AD}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{24336426-7260-4E06-8DA3-78B8E92A3FE4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -149,29 +149,6 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Fail if errors"
-      DTS:CreationName="Microsoft.ScriptTask"
-      DTS:Description="Script Task"
-      DTS:DTSID="{cd014338-05b5-496a-8342-c1ff47471168}"
-      DTS:ExecutableType="Microsoft.ScriptTask"
-      DTS:FailPackageOnFailure="True"
-      DTS:FailParentOnFailure="True"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Fail if errors"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:PropertyExpression
-        DTS:Name="ForceExecutionResult">@[User::errorsCount] &gt; 0 ? 1 : -1</DTS:PropertyExpression>
-      <DTS:ObjectData>
-        <ScriptProject
-          Name="ST_b6dff1abb92a47d99321578960240728"
-          VSTAMajorVersion="3"
-          VSTAMinorVersion="0"
-          Language="CSharp"
-          ReadOnlyVariables="User::errorsCount" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\Initialize Db"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
@@ -194,6 +171,8 @@
       DTS:Description="Execute Package Task"
       DTS:DTSID="{3EFB7746-69AD-45A8-8EA9-9A243B40BDD5}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:FailParentOnFailure="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="Load Data to Db"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
@@ -223,14 +202,6 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Load Data to Db" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{AD3B15B2-FF8F-4D58-BB9C-92D0F91FCB37}"
-      DTS:From="Package\Load Data to Db"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Fail if errors" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -248,10 +219,6 @@
           Size="178,42"
           Id="Package\Create Log Directory"
           TopLeft="34.4999999999999,37" />
-        <NodeLayout
-          Size="137,42"
-          Id="Package\Fail if errors"
-          TopLeft="61,277.25" />
         <NodeLayout
           Size="137,42"
           Id="Package\Initialize Db"
@@ -296,28 +263,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="129.5,240.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.75"
-              Start="0,0"
-              End="0,29.25">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
