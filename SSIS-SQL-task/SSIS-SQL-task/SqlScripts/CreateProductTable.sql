@@ -1,7 +1,7 @@
 CREATE TABLE [Market].[Product](
 	[ProductID] [uniqueidentifier] DEFAULT (newsequentialid()) NOT NULL,
 	[Name] [nvarchar](255) NOT NULL,
-	[Price] [decimal] NOT NULL,
+	[Price] [decimal](5,2) NOT NULL,
 	[CategoryID] [uniqueidentifier] NOT NULL,
  CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED 
 (

@@ -9,7 +9,7 @@ CREATE SCHEMA import AUTHORIZATION dbo
 		[Product] nvarchar(255) not null,
 		[Customer] nvarchar(255) not null,
 		[TransactionId] float not null,
-		[Price] decimal not null,
+		[Price] decimal(5,2) not null,
 		[Region] nvarchar(255) not null,
 		[Category] nvarchar(255) not null,
 		[Date] datetime not null	

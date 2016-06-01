@@ -1,7 +1,7 @@
 CREATE TABLE [Market].[TransactionProduct](
 	[TransactionID] [uniqueidentifier] NOT NULL,
 	[ProductID] [uniqueidentifier] NOT NULL,
-	[Price] [decimal] NOT NULL,
+	[Price] [decimal](5,2) NOT NULL,
  CONSTRAINT [PK_TransactionProduct] PRIMARY KEY CLUSTERED 
 (
 	[TransactionID] ASC,
